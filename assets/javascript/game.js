@@ -1,22 +1,35 @@
 
-var artists = ["yokoo","leeburrige","tiesto","bjkjjk","kjghkjgkhj","jgfjgj"]
-
-var guess = 0
+var artists = ["bannna","apple"]     
 
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
+var correctGuesses = []
+
+var guessesRemaining=0
 
 function alphabetsplice(userinput){
 
 
-
- var x = 0
- alphabet.indexOf(userinput)
+ var x = alphabet.indexOf(userinput)
 
  alphabet.splice((x),1);
 }
 
 
+
+function guessespush(x)
+{
+
+correctGuesses.push(x)
+
+
+}
+
+while(guessesRemaining != 3)
+{
+
+
+}
 
 document.onkeyup = function userpresskey(event){
 
@@ -25,7 +38,6 @@ document.onkeyup = function userpresskey(event){
 
 
  var userinput = event.key;
-var userguessArray = [];
 
 
 var currentArtist = artists[Math.floor(Math.random()*artists.length)];
@@ -44,18 +56,40 @@ for(i=0;i<splitArtist.length;i++)
 
 	if (userinput ===  splitArtist[i])
 	{
-
-		splitArtist.indexOf(userinput)
-		userguessArray.push(userinput)
+	   var x = userinput
+	    guessespush(x);
+		
 	}
-}
-	
-	alphabetsplice()
 
-alert(userguessArray[0])
+
+}
+
+alert(correctGuesses[0])
+
+
+
+if ((splitArtist).indexOf(userinput) == -1) { 
+
+	alphabetsplice(userinput)
+	
+}
+
+
 
 for (i = 0; i<alphabet.length; i++) {
 	document.write(alphabet[i])
 }
+
+
+
+
+
+for (i=0; i<guesses.legnth; i++)
+	{alert(guesses[i])
+	}
+
 }
+
+var winsText = document.getElementById('wins')
+          winsText.textContent = 
 
