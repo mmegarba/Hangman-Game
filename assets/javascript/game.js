@@ -1,95 +1,136 @@
 
-var artists = ["bannna","apple"]     
+var artists = ["Yokoo","Sabo"]     
+
+var attempts = 0
 
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 var correctGuesses = []
 
-var guessesRemaining=0
 
-function alphabetsplice(userinput){
-
-
- var x = alphabet.indexOf(userinput)
-
- alphabet.splice((x),1);
-}
-
-
-
-function guessespush(x)
-{
-
-correctGuesses.push(x)
-
-
-}
-
-while(guessesRemaining != 3)
-{
-
-
-}
-
-document.onkeyup = function userpresskey(event){
-
-
-
-
-
- var userinput = event.key;
-
-
+function randomword(){
 var currentArtist = artists[Math.floor(Math.random()*artists.length)];
 
-alert(currentArtist)
 
 var splitArtist = currentArtist.split('');
 
-alert(splitArtist)
+
+ var letterPlaces =currentArtist.length 
+alert(letterPlaces)
 
 
 
-for(i=0;i<splitArtist.length;i++)
 
+var targetdiv = document.getElementById("wordtobeGuessed");
+targetdiv.innerHTML = "__ "
+
+for(i=0; i<letterPlaces-1;i++)
 {
-
-	if (userinput ===  splitArtist[i])
-	{
-	   var x = userinput
-	    guessespush(x);
-		
-	}
+var newspan = document.createElement("span")
+targetdiv.append(newspan)
+newspan.innerHTML = "__ "
+}
+// }
 
 
 }
 
-alert(correctGuesses[0])
+
+randomword()
 
 
 
-if ((splitArtist).indexOf(userinput) == -1) { 
+document.getElementById('EnterGuess').onclick = function() {
+document.getElementById('EnterGuess').onkeyup = function(event)
+{
+ var userinput = event.key;
 
-	alphabetsplice(userinput)
+ alert(userinput)
+}
+}
+
+
+
+
+
+
+// function alphabetsplice(userinput){
+
+
+ // var x = alphabet.indexOf(userinput)
+
+ // alphabet.splice((x),1);
+// }
+
+
+
+// function guessespush(x)
+// {
+
+// correctGuesses.push(x)
+
+
+// }
+
+
+
+
+
+// document.onkeyup = function userpresskey(event){
+
+
+
+
+
+ // var userinput = event.key;
+
+
+
+// for(i=0;i<splitArtist.length;i++)
+
+// {
+
+	// if (userinput ===  splitArtist[i])
+	// {
+	   
+	    // guessespush(userinput);
+		  
+	// }
+
+
+// }
+
+
+
+
+// if ((splitArtist).indexOf(userinput) == -1) { 
+
+	// alphabetsplice(userinput)
 	
-}
+// }
 
 
 
-for (i = 0; i<alphabet.length; i++) {
-	document.write(alphabet[i])
-}
+// for (i = 0; i<alphabet.length; i++) {
+	// document.write(alphabet[i])
+// }
 
 
 
 
 
-for (i=0; i<guesses.legnth; i++)
-	{alert(guesses[i])
-	}
+// for (i=0; i<correctGuesses.length; i++)
+	// {alert(correctGuesses[i])
+	// }
 
-}
+// }
 
-var winsText = document.getElementById('wins')
-          winsText.textContent = 
 
+
+
+
+
+
+
+	
+  

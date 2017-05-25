@@ -4,18 +4,94 @@
 	
 <head>
 	<title>
-	Hangman
+	Hangman Game
 	</title>
-<script type='text/javascript' src='assets/javascript/game.js'></script>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 
 <body>
+
+<header>
 	
+Hangman
+
+</header>
+
+
+
+<section>
+
+
+<div class="row" style = "border-style:groove">
+	
+
+<div class="col-sm-6" style = "border-style:groove">
+
+</div>
+<div class="col-sm-6" style = "border-style:groove">
+	Press Any Key to Start
+
+	<div id = "wins">
+	Wins:
+	</div>
+	<div id = "currentword">
+	Current Word
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<div id ="wordtobeGuessed">
+	</div>
+<form>
+	
+  <input type="text" id = "EnterGuess" name="EnterGuess" placeholder="a-z">
+		
+	</form>
+
+	</div>
+	<div id = "guessesremaining">
+
+	Number of Guesses remaining
+	</div>
+
+	<div id = "letterguessed">
+	Letters Already Guessed
+	</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 <div id = "test">
+
+
+
 
 
 </div>
@@ -28,7 +104,7 @@
 
 
 
-
+		<script type='text/javascript' src='assets/javascript/game.js'></script>
 
 
 </body>
