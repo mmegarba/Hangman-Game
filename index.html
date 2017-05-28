@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <html>
-	
+
 <head>
 	<title>
 	Hangman Game
@@ -13,103 +13,53 @@
 <body>
 
 <header>
-	
+
 Hangman
 
 </header>
-
 
 
 <section>
 
 
 <div class="row" style = "border-style:groove">
-	
+
 
 <div class="col-sm-6" style = "border-style:groove">
 
 </div>
 <div class="col-sm-6" style = "border-style:groove">
-	Press Any Key to Start
-
+Enter your Guess
 	<div id = "wins">
 	Wins:
-	</div>
-	<div id = "currentword">
-	Current Word
-	<br>
-	<br>
-	<br>
-	<br>
+</div>
 
-
-	<div id ="wordtobeGuessed">
-	</div>
 <form>
-	
-  <input type="text" id = "EnterGuess" name="EnterGuess" placeholder="a-z">
-		
-	</form>
+<input =text id ="textinput" name ="guessbox" maxlength="1">
 
-	</div>
-	<div id = "guessesremaining">
+<button type ="button"  id = "submit">Submit</button>
+</form>
 
-	Number of Guesses remaining
-	</div>
 
-	<div id = "letterguessed">
-	Letters Already Guessed
-	</div>
-</div>
 
+
+<div id = "currentword">
 </div>
 
 
 
+<div id = "attempts">
 
-
+</div>
 
 
 
 </section>
 
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-<div id = "test">
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
 		<script type='text/javascript' src='assets/javascript/game.js'></script>
 
 
 </body>
-
-
 
 
 </html>

@@ -1,174 +1,118 @@
+var wordList = ["yokoo"];
+var attempts = 10
+var lettersGuessed = []
 
-var artists = ["Yokoo","Sabo"]     
-
-var attempts = 0
-
-var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-
-var correctGuesses = []
-
-var blankarray = []
+var targetAttempts = document.getElementById("attempts")
+var x = document.createElement("div")
+x.innerHTML = attempts;
+targetAttempts.appendChild(x)
 
 
+var currentArtist = wordList[Math.floor(Math.random()*wordList.length)];
+var splitArtist = currentArtist.split("")
+var guesses = new Array(currentArtist.length);
+var correctGuess = [];
 
-// picks a random word from the artist array and places it in the html
-function randomword(){
-var currentArtist = artists[Math.floor(Math.random()*artists.length)];
-
-
-var splitArtist = currentArtist.split('');
-
-
- var letterPlaces =currentArtist.length 
-
-
-
-
-var targetdiv = document.getElementById("wordtobeGuessed");
-targetdiv.innerHTML = "__ "
-
-for(i=0; i<letterPlaces-1;i++)
+for (i=0; i<currentArtist.length; i++)
 {
-var newspan = document.createElement("span")
-targetdiv.append(newspan)
-newspan.innerHTML = "__ "
+guesses[i] = "__ "
+}
+
+
+function checkforwin(){
+  var re = /,/gi;
+  var newstring = guesses.toString()
+  var newstring = newstring.replace(re,"");
+
+  if(newstring===currentArtist)
+  {
+    alert("win")
+  }
+
+}
+
+function updatescore(){
+
+  x.innerHTML= (attempts);
 
 }
 
 
-document.getElementById('EnterGuess').onclick = function startinput(splitArtist) {
-document.getElementById('EnterGuess').onkeyup = function(event) {
- var userinput = event.key;
-
- alert(userinput)
-
-
-for(i=0; i<splitArtist.length; i++)
-
-	{
-	if(userinput===splitArtist[i])
-	{
-		var x = i
-		blankarray.splice(x,1,(userinput))
-		alert("found")
-	}
-
-
-}
-}
-
+function win(){
 
 }
 
+
+function alreadyguessed(){
+
+  console.log("already guessed");
 }
 
-randomword()
-for(i=0;i<blankarray.length;i++)
-{
-	console.log(blankarray[i])
+
+function reset(){
+
+var targetDiv = document.getElementById("currentword")
+targetDiv.innerHTML = ""
 }
 
 
+function printguessField(){
 
-// function tha captures user key press once inside input box
+var targetDiv = document.getElementById("currentword")
 
-
-
-
-
-function newletter(){
-var targetdiv2 = document.getElementbyId("wordtobeGuessed");
-
-for(j=0;j<blankarray.length;i++)
+for (i=0; i <guesses.length; i++)
 
 {
-	var newspan = document.createElement("span")
-	targetdiv2.append(newspan)
-newspan.innerHTML = blankarray[j]
+  var guessedLetter = document.createElement("span")
+  guessedLetter.innerHTML = (guesses[i]);
+  targetDiv.appendChild(guessedLetter);
+}
+
+}
+printguessField()
+
+
+
+document.getElementById("textinput").onkeyup=function listenkey(event)
+{
+
+  var userinput = event.key
+  console.log(event.key)
+
+document.getElementById("submit").onclick = function checkletter(){
+for(i=0; i<lettersGuessed.length; i++)
+{
+  if(userinput === lettersGuessed[i])
+  {
+    alreadyguessed()
+    return
+  }
+}
+  if (splitArtist.indexOf(userinput) === -1)
+  {
+   attempts--;
+   lettersGuessed.push(userinput)
+ }
+
+
+for(j=0; j<splitArtist.length ; j++)
+
+{
+  if(userinput === splitArtist[j])
+  {
+    console.log("yes")
+    guesses.splice(j,1,userinput)
+    correctGuess.push(userinput)
+    lettersGuessed.push(userinput)
+
+  }
+
+}
+
+updatescore()
+reset()
+printguessField()
+checkforwin()
+
 }
 }
-
-
-
-
-
-// function alphabetsplice(userinput){
-
-
- // var x = alphabet.indexOf(userinput)
-
- // alphabet.splice((x),1);
-// }
-
-
-
-// function guessespush(x)
-// {
-
-// correctGuesses.push(x)
-
-
-// }
-
-
-
-
-
-// document.onkeyup = function userpresskey(event){
-
-
-
-
-
- // var userinput = event.key;
-
-
-
-// for(i=0;i<splitArtist.length;i++)
-
-// {
-
-	// if (userinput ===  splitArtist[i])
-	// {
-	   
-	    // guessespush(userinput);
-		  
-	// }
-
-
-// }
-
-
-
-
-// if ((splitArtist).indexOf(userinput) == -1) { 
-
-	// alphabetsplice(userinput)
-	
-// }
-
-
-
-// for (i = 0; i<alphabet.length; i++) {
-	// document.write(alphabet[i])
-// }
-
-
-
-
-
-// for (i=0; i<correctGuesses.length; i++)
-	// {alert(correctGuesses[i])
-	// }
-
-// }
-
-
-
-
-
-
-
-
-	
-  
