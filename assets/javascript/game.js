@@ -1,4 +1,4 @@
-var wordList = ["yokoo"];
+var wordList = ["yokoo", "sabo","dubfire"];
 var attempts = 10
 var lettersGuessed = []
 
@@ -43,9 +43,10 @@ function win(){
 }
 
 
-function alreadyguessed(){
+function alreadyguessed(userinput){
 
   console.log("already guessed");
+
 }
 
 
@@ -92,6 +93,7 @@ for(i=0; i<lettersGuessed.length; i++)
   {
    attempts--;
    lettersGuessed.push(userinput)
+
  }
 
 
