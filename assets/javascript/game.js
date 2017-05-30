@@ -1,6 +1,16 @@
-var wordList = ["yokoo", "sabo","dubfire"];
+var wordList = ["yokoo", "sabo"];
 var attempts = 10
 var lettersGuessed = []
+var wins =0
+
+var artists = {
+  "yokoo" : "https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg",
+  "sabo" : "http://www.projectrevolver.org/wp-content/uploads/2016/05/Sabo_Tulum_5x3.75-fit.jpg",
+}
+
+
+
+
 
 var targetAttempts = document.getElementById("attempts")
 var x = document.createElement("div")
@@ -19,6 +29,28 @@ guesses[i] = "__ "
 }
 
 
+function resetgame()
+{
+attempts = 0
+var targetDiv = document.getElementById("currentword")
+targetDiv.innerHTML = ""
+
+
+}
+
+
+
+function printGuessed(userinput){
+
+  var alreadyGuessed = document.getElementById("Alreadyguessed")
+  var y = document.createElement("span")
+  y.innerHTML = userinput + ", "
+  alreadyGuessed.appendChild(y)
+  y.setAttribute("style","color:red;")
+}
+
+
+
 function checkforwin(){
   var re = /,/gi;
   var newstring = guesses.toString()
@@ -26,7 +58,9 @@ function checkforwin(){
 
   if(newstring===currentArtist)
   {
-    alert("win")
+    wins++
+    win(currentArtist)
+    console.log("win")
   }
 
 }
@@ -38,19 +72,24 @@ function updatescore(){
 }
 
 
-function win(){
+function win(currentArtist){
+var targetDiv = document.getElementById("pictureholder")
+var newimg = document.createElement("img")
+newimg.setAttribute("src","https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg")
+newimg.setAttribute("style","width:100px;height:100px;z-index:5")
+targetDiv.appendChild(newimg)
 
 }
 
 
-function alreadyguessed(userinput){
+function alreadyguessedPrompt(userinput){
 
-  console.log("already guessed");
+  alert("You have already guessed that letter. Try a different one.");
 
 }
 
 
-function reset(){
+function resetfield(){
 
 var targetDiv = document.getElementById("currentword")
 targetDiv.innerHTML = ""
@@ -70,6 +109,7 @@ for (i=0; i <guesses.length; i++)
 }
 
 }
+
 printguessField()
 
 
@@ -81,11 +121,13 @@ document.getElementById("textinput").onkeyup=function listenkey(event)
   console.log(event.key)
 
 document.getElementById("submit").onclick = function checkletter(){
+submit.value = ""
+
 for(i=0; i<lettersGuessed.length; i++)
 {
   if(userinput === lettersGuessed[i])
   {
-    alreadyguessed()
+    alreadyguessedPrompt()
     return
   }
 }
@@ -93,6 +135,7 @@ for(i=0; i<lettersGuessed.length; i++)
   {
    attempts--;
    lettersGuessed.push(userinput)
+   printGuessed(userinput);
 
  }
 
@@ -112,7 +155,7 @@ for(j=0; j<splitArtist.length ; j++)
 }
 
 updatescore()
-reset()
+resetfield()
 printguessField()
 checkforwin()
 

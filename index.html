@@ -6,29 +6,46 @@
 	<title>
 	Hangman Game
 	</title>
-
+<link rel = "stylesheet" href = "assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:900i" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 
 <body>
 
+	<div class = "container">
+
+<div class = "row">
+
+<div class = "col">
 <header>
 
-Hangman
+Hangman Burning Man Edition
 
 </header>
-
+</div>
+</div>
 
 <section>
 
 
-<div class="row" style = "border-style:groove">
+<div class="row">
 
 
-<div class="col-sm-6" style = "border-style:groove">
+<div class="col-sm-6">
+
+<div id = "Alreadyguessed">
+
 
 </div>
-<div class="col-sm-6" style = "border-style:groove">
+
+<img id = "pictureholder">
+</img>
+
+</div>
+
+
+<div class="col-sm-6">
 Enter your Guess
 	<div id = "wins">
 	Wins:
@@ -49,17 +66,16 @@ Enter your Guess
 
 
 <div id = "attempts">
-
+Attempts Remaining
 </div>
 
-<div id = "alreadyguessed"
 
 
 </section>
 
 		<script type='text/javascript' src='assets/javascript/game.js'></script>
 
-
+</div>
 </body>
 
 
