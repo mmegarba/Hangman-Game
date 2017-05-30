@@ -1,7 +1,7 @@
 var wordList = ["yokoo", "sabo"];
 var attempts = 10
 var lettersGuessed = []
-var wins =0
+var wins = 0
 
 var artists = {
   "yokoo" : "https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg",
@@ -29,11 +29,26 @@ guesses[i] = "__ "
 }
 
 
-function resetgame()
+document.getElementById("reset").onclick = function resetgame()
 {
-attempts = 0
 var targetDiv = document.getElementById("currentword")
 targetDiv.innerHTML = ""
+
+
+var currentArtist = wordList[Math.floor(Math.random()*wordList.length)];
+var splitArtist = currentArtist.split("")
+var guesses = new Array(currentArtist.length);
+var correctGuess = [];
+
+for (i=0; i<currentArtist.length; i++)
+{
+guesses[i] = "__ "
+}
+
+printguessField(guesses)
+
+var target = document.getElementById("Alreadyguessed")
+target.innerHTML= ""
 
 
 }
@@ -96,7 +111,7 @@ targetDiv.innerHTML = ""
 }
 
 
-function printguessField(){
+function printguessField(guesses){
 
 var targetDiv = document.getElementById("currentword")
 
@@ -110,7 +125,7 @@ for (i=0; i <guesses.length; i++)
 
 }
 
-printguessField()
+printguessField(guesses)
 
 
 
@@ -156,7 +171,7 @@ for(j=0; j<splitArtist.length ; j++)
 
 updatescore()
 resetfield()
-printguessField()
+printguessField(guesses)
 checkforwin()
 
 }
