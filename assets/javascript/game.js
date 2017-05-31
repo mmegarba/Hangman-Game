@@ -11,7 +11,7 @@ var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 
 var arraytest = [ ["yokoo","terje","priku","djebali"],
  ["assets/images/Yokoo.jpg","assets/images/Terje.jpg","assets/images/Priku.jpg","assets/images/Djebali.jpg"],
- ["assets/music/Yokoo.mp3","assets/music/Inspector Norse.mp3","assets/music/Priku.mp3","assets/music/Djebali.mp3"]]
+ ["../music/Yokoo.mp3","assets/music/Inspector Norse.mp3","assets/music/Priku.mp3","assets/music/Djebali.mp3"]]
 
 
 
