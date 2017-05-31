@@ -2,7 +2,7 @@
 body{
   font-size:16pt;
   font-family: 'Roboto', sans-serif;
-  background-image: url("assets/images/space.jpg");
+  background-image: url("../images/space.jpg");
   background-size: 100% 100%;
   background-repeat:no-repeat;
   height:850px
