@@ -1,7 +1,12 @@
 var wordList = ["yokoo", "sabo"];
-var attempts = 10
+var attempts
 var lettersGuessed = []
 var wins = 0
+var currentArtist
+var splitArtist
+var guesses
+var correctGuess=[]
+
 
 var artists = {
   "yokoo" : "https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg",
@@ -11,34 +16,18 @@ var artists = {
 
 
 
-
-var targetAttempts = document.getElementById("attempts")
-var x = document.createElement("div")
-x.innerHTML = attempts;
-targetAttempts.appendChild(x)
-
-
-var currentArtist = wordList[Math.floor(Math.random()*wordList.length)];
-var splitArtist = currentArtist.split("")
-var guesses = new Array(currentArtist.length);
-var correctGuess = [];
-
-for (i=0; i<currentArtist.length; i++)
-{
-guesses[i] = "__ "
-}
-
-
 document.getElementById("reset").onclick = function resetgame()
 {
+
+lettersGuessed = []
 var targetDiv = document.getElementById("currentword")
 targetDiv.innerHTML = ""
 
 
-var currentArtist = wordList[Math.floor(Math.random()*wordList.length)];
-var splitArtist = currentArtist.split("")
-var guesses = new Array(currentArtist.length);
-var correctGuess = [];
+currentArtist = wordList[Math.floor(Math.random()*wordList.length)];
+splitArtist = currentArtist.split("")
+guesses = new Array(currentArtist.length);
+correctGuess = [];
 
 for (i=0; i<currentArtist.length; i++)
 {
@@ -75,16 +64,21 @@ function checkforwin(){
   {
     wins++
     win(currentArtist)
-    console.log("win")
+    updatewins()
   }
 
 }
 
 function updatescore(){
-
-  x.innerHTML= (attempts);
-
+  targetDiv = document.getElementById("attempts")
+  targetDiv.innerHTML = "Attempts Remaining: " + (attempts);
 }
+
+function updatewins(){
+targetDiv = document.getElementById("wins")
+targetDiv.innerHTML = "Wins: " + wins ;
+}
+
 
 
 function win(currentArtist){
@@ -124,8 +118,6 @@ for (i=0; i <guesses.length; i++)
 }
 
 }
-
-printguessField(guesses)
 
 
 
@@ -176,3 +168,25 @@ checkforwin()
 
 }
 }
+
+function startgame(){
+
+attempts = 10
+
+
+currentArtist= wordList[Math.floor(Math.random()*wordList.length)];
+splitArtist = currentArtist.split("")
+guesses = new Array(currentArtist.length);
+var correctGuess = [];
+
+for (i=0; i<currentArtist.length; i++)
+{
+guesses[i] = "__ "
+}
+
+printguessField(guesses)
+
+
+}
+
+startgame()
