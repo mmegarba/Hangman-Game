@@ -1,4 +1,4 @@
-var wordList = ["yokoo", "sabo"];
+var wordList = ["yokoo","terje","priku","djebali"];
 var attempts
 var lettersGuessed = []
 var wins = 0
@@ -6,18 +6,29 @@ var currentArtist
 var splitArtist
 var guesses
 var correctGuess=[]
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 
-var artists = {
-  "yokoo" : "https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg",
-  "sabo" : "http://www.projectrevolver.org/wp-content/uploads/2016/05/Sabo_Tulum_5x3.75-fit.jpg",
-}
+var arraytest = [ ["yokoo","terje","priku","djebali"],
+ ["assets/images/yokoo.jpg","assets/images/terje.jpg","assets/images/priku.jpg","assets/images/djebali.jpg"],
+ ["assets/music/yokoo.mp3","assets/music/Inspector Norse.mp3","assets/music/priku.mp3","assets/music/djebali.mp3"]]
 
 
 
 
 document.getElementById("reset").onclick = function resetgame()
 {
+
+attempts = 7
+
+targetPicture = document.getElementById("pictureholder")
+targetPicture.innerHTML = ""
+
+
+
+targetAttempt = document.getElementById("attempts")
+targetAttempt.innerHTML = "Attempts Remaining: " + attempts;
+targetAttempt.setAttribute("style","color:red;")
 
 lettersGuessed = []
 var targetDiv = document.getElementById("currentword")
@@ -50,8 +61,18 @@ function printGuessed(userinput){
   var y = document.createElement("span")
   y.innerHTML = userinput + ", "
   alreadyGuessed.appendChild(y)
-  y.setAttribute("style","color:red;")
+  y.setAttribute("style", "font-size:18pt; font-weight:bold; color:red")
 }
+
+function checkforlose(){
+
+  if (attempts === 0)
+  {
+    lose()
+  }
+}
+
+
 
 
 
@@ -65,6 +86,7 @@ function checkforwin(){
     wins++
     win(currentArtist)
     updatewins()
+    console.log(wins)
   }
 
 }
@@ -76,18 +98,26 @@ function updatescore(){
 
 function updatewins(){
 targetDiv = document.getElementById("wins")
+targetDiv.setAttribute("style", "color:red; font-size:18pt")
 targetDiv.innerHTML = "Wins: " + wins ;
 }
 
+function lose(){
+  alert("He's Dead")
+}
 
-
-function win(currentArtist){
+function win(){
+var x = arraytest[0].indexOf(currentArtist)
 var targetDiv = document.getElementById("pictureholder")
 var newimg = document.createElement("img")
-newimg.setAttribute("src","https://www.residentadvisor.net/images/events/flyer/2016/3/au-0304-803575-front.jpg")
-newimg.setAttribute("style","width:100px;height:100px;z-index:5")
+newimg.setAttribute("src",arraytest[1][x])
+newimg.setAttribute("style","width:300px;height:300px;z-index:5;float:left")
 targetDiv.appendChild(newimg)
 
+
+var targetTrack = document.getElementById("myAudio")
+targetTrack.setAttribute("src",arraytest[2][x])
+targetTrack.play();
 }
 
 
@@ -113,8 +143,10 @@ for (i=0; i <guesses.length; i++)
 
 {
   var guessedLetter = document.createElement("span")
-  guessedLetter.innerHTML = (guesses[i]);
+  guessedLetter.innerHTML = (guesses[i] + " ");
   targetDiv.appendChild(guessedLetter);
+  guessedLetter.setAttribute("style","font-size:20pt; color:red")
+
 }
 
 }
@@ -125,10 +157,17 @@ document.getElementById("textinput").onkeyup=function listenkey(event)
 {
 
   var userinput = event.key
+  userinput = userinput.toLowerCase();
   console.log(event.key)
 
 document.getElementById("submit").onclick = function checkletter(){
-submit.value = ""
+textinput.value = ""
+
+if(alphabet.indexOf(userinput)=== -1)
+{
+  alert("Please Choose a Valid Letter (a-z)")
+  return 0
+}
 
 for(i=0; i<lettersGuessed.length; i++)
 {
@@ -165,13 +204,22 @@ updatescore()
 resetfield()
 printguessField(guesses)
 checkforwin()
+checkforlose()
 
 }
 }
 
 function startgame(){
 
-attempts = 10
+
+attempts = 7
+
+
+targetAttempt = document.getElementById("attempts")
+targetAttempt.innerHTML = "Attempts Remaining: " + attempts;
+targetAttempt.setAttribute("style","color:red;")
+
+
 
 
 currentArtist= wordList[Math.floor(Math.random()*wordList.length)];

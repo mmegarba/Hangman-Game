@@ -1,16 +1,18 @@
 
 body{
-  /*background-image: url("../images/burningman.jpg");*/
   font-size:16pt;
   font-family: 'Roboto', sans-serif;
-
+  background-image: url("http://wallpapercave.com/wp/pEeUsp1.jpg");
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  height:850px
 }
 
 
 
 section{
 
-  /*background-image: url("../images/burningman.jpg");*/
+
   font-size:16pt;
   font-family: 'Roboto', sans-serif;
   color:black
@@ -23,17 +25,8 @@ color: red;
 text-align:center;
 font-family: 'Roboto', sans-serif;
 height:300px;
-
-
 }
 
-#artistdisplay{
-
-font-size:20pt;
-color:red;
-
-}
-
-#artistpicture{
-
+h3{
+color:red!important;
 }
